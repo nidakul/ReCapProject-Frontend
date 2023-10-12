@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from 'src/app/models/car';
-import { CarResponseModel } from 'src/app/models/carResponseModel';
+import { CarDetail } from 'src/app/models/carDetail';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { CarService } from 'src/app/services/car.service';
   styleUrls: ['./car.component.css']
 })
 export class CarComponent implements OnInit {
-  cars: Car[] = [];
+  carDetails: CarDetail[] = [];
   dataLoaded = false;
 
   constructor(private carService : CarService) { }
@@ -19,7 +18,7 @@ export class CarComponent implements OnInit {
 
   getCars() {
     this.carService.getCars().subscribe(response =>{
-      this.cars = response.data;
+      this.carDetails = response.data;
       this.dataLoaded = true;
     })
   }
