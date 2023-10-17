@@ -1,36 +1,41 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<!-- 
 <div *ngIf = "dataLoaded==false" class="spinner-border text-primary" role="status">
     <span class="visually-hidden">Loading...</span>
-  </div>
+  </div>-->
 
   <div class="mb-3">
-    <label for="filterText" class="form-label">Search car name</label>
+    <label for="filterText" class="form-label"></label>
     <input type="text" [(ngModel)] = "filterText" class="form-control" id="filterText" placeholder="Search car name">
   </div>
 
+  <!-- 
   <div *ngIf="filterText" class="alert alert-success">
     {{filterText}} aradınız
-  </div>
+  </div>-->
 
-<table *ngIf = "dataLoaded!=false" class="table">
-    <thead> 
-        <tr>
-            <th>CarName</th>
-            <th>ColorName</th>
-            <th>BrandName</th>
-            <th>CarName</th>
-            <th>ModelYear</th>
-            <th>DailyPrice</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tr *ngFor = "let carDetail of carDetails | filterPipe : filterText">
-        <td>{{carDetail.carName}}</td>
-        <td>{{carDetail.colorName}}</td>
-        <td>{{carDetail.brandName}}</td>
-        <td>{{carDetail.carName}}</td>
-        <td>{{carDetail.modelYear}}</td>
-        <td>{{carDetail.dailyPrice | currency}}</td>
-        <td>{{carDetail.description}}</td>
-
+<table id="carDetailTable" *ngIf="dataLoaded!=false" class="table">
+  <thead id="carDetail">
+    <tr id="carDetailText">
+      <th>BrandName</th>
+      <th>CarName</th>
+      <th>ColorName</th>
+      <th>ModelYear</th> 
+      <th>DailyPrice</th>
+      <th>Description</th>
     </tr>
+  </thead>
+  <tr *ngFor="let carDetail of carDetails | filterPipe : filterText">
+    <td>{{carDetail.brandName}}</td> 
+    <td>{{carDetail.carName}}</td>
+    <td>{{carDetail.colorName}}</td>
+    <td>{{carDetail.modelYear}}</td>
+    <td>{{carDetail.dailyPrice | currency}}</td>
+    <td>{{carDetail.description}}</td>
+    <div class="heart-container">
+      <i id="heart" class="fa fa-heart" style="color: rgb(138, 214, 185);"></i>
+    </div>
+    </tr> 
 </table>

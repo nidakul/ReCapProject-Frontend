@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { CarDetail } from '../models/carDetail';
+import { Brand } from '../models/brand';
 
 @Pipe({
   name: 'filterPipe'
