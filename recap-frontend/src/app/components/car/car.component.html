@@ -27,6 +27,7 @@
       <th>Description</th>
     </tr>
   </thead>
+  <tbody>
   <tr *ngFor="let carDetail of carDetails | filterPipe : filterText">
     <td>{{carDetail.brandName}}</td> 
     <td>{{carDetail.carName}}</td>
@@ -37,5 +38,7 @@
     <div class="heart-container">
       <i id="heart" class="fa fa-heart" style="color: rgb(138, 214, 185);"></i>
     </div>
+    <div><button (click) = "addToCart(carDetail)" class = "btn btn-success">Add To Cart</button></div>
     </tr> 
+  </tbody>
 </table>

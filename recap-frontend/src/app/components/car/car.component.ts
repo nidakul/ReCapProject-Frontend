@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CarDetail } from 'src/app/models/carDetail';
 import { CarService } from 'src/app/services/car.service';
 
@@ -13,7 +14,8 @@ export class CarComponent implements OnInit {
   dataLoaded = false;
   filterText = "";
 
-  constructor(private carService : CarService, private activatedRoute : ActivatedRoute) { }
+  constructor(private carService : CarService, private activatedRoute : ActivatedRoute,
+    private toastrService : ToastrService) { }
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       if(params["brandId"]){
@@ -38,5 +40,9 @@ export class CarComponent implements OnInit {
       this.carDetails = response.data;
       this.dataLoaded = true;
     })
+  }
+
+  addToCart(car : CarDetail){
+    this.toastrService.success(car.carName, "Adding to cart");
   }
 }
