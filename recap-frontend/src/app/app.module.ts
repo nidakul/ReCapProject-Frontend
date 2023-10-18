@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserModule } from '@angular/platform-browser';
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BrowserModule } from '@angular/platform-browser';
     RentalComponent,
     HomeComponent,
     VatAddedPipe,
-    FilterPipePipe
+    FilterPipePipe,
+    CartSummaryComponent
   ], 
   imports: [
     BrowserModule,
