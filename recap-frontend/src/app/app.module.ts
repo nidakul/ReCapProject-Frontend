@@ -7,7 +7,7 @@ import { CarComponent } from './components/car/car.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { ColorComponent } from './components/color/color.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CustomerComponent } from './components/customer/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { HomeComponent } from './components/home/home.component';
@@ -18,6 +18,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserModule } from '@angular/platform-browser';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,10 +34,11 @@ import { CarAddComponent } from './components/car-add/car-add.component';
     VatAddedPipe,
     FilterPipePipe,
     CartSummaryComponent,
-    CarAddComponent
+    CarAddComponent,
+    LoginComponent
   ], 
   imports: [
-    BrowserModule,
+    BrowserModule, 
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -45,7 +48,9 @@ import { CarAddComponent } from './components/car-add/car-add.component';
     BrowserAnimationsModule,
     ReactiveFormsModule 
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi : true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
